@@ -1,6 +1,6 @@
 ---
-title: OpenHands Backend API
-emoji: 🤖
+title: Personal OpenHands Backend
+emoji: 💕
 colorFrom: blue
 colorTo: purple
 sdk: docker
@@ -9,38 +9,51 @@ license: mit
 app_port: 7860
 ---
 
-# 🤖 OpenHands Backend API
+# 💕 Personal OpenHands Backend
 
-A powerful AI agent backend that can execute code, browse the web, and interact with various tools. Perfect for building AI-powered applications!
+A powerful AI agent backend made for you and your girlfriend! OpenRouter-only, no Google Cloud, simple authentication, and optimized for Hugging Face Spaces.
 
 ## 🚀 Quick Start
 
-This Space provides a ready-to-use API for OpenHands AI agent. No authentication required for testing!
+This Space provides a personal AI assistant backend for you and your girlfriend only! Simple authentication protects your privacy.
+
+### 🔐 Authentication Required
+
+Most endpoints require a Bearer token. Set `PERSONAL_ACCESS_TOKEN` in your HF Spaces environment variables.
 
 ### API Endpoints
 
 ```bash
-# Get configuration
-GET /api/options/config
+# Health check (public)
+GET /health
 
-# Create conversation
+# Personal info (protected)
+GET /personal-info
+Authorization: Bearer your_personal_token
+
+# OpenHands API endpoints (protected)
+GET /api/options/config
+Authorization: Bearer your_personal_token
+
+# Create conversation (protected)
 POST /api/conversations
+Authorization: Bearer your_personal_token
 Content-Type: application/json
 {
   "initial_user_msg": "Hello! Can you help me with coding?"
 }
-
-# Health check
-GET /health
 ```
 
 ### Example Usage
 
 ```javascript
-// Create a new conversation
+// Create a new conversation with authentication
 const response = await fetch('https://your-space.hf.space/api/conversations', {
   method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer your_personal_token'
+  },
   body: JSON.stringify({
     initial_user_msg: 'Write a Python function to calculate fibonacci numbers'
   })
@@ -50,19 +63,20 @@ const conversation = await response.json();
 console.log(conversation);
 ```
 
-## ⚙️ Configuration
+## ⚙️ Required Configuration
 
-Set these environment variables in your Space settings:
+Set these environment variables in your HF Spaces settings:
 
 ```bash
-# Required for LLM functionality
+# Required - Your OpenRouter API key
 LLM_API_KEY=your_openrouter_api_key
+
+# Required - Personal access token for authentication
+PERSONAL_ACCESS_TOKEN=your_secret_token_here
+
+# Optional - LLM configuration (defaults provided)
 LLM_MODEL=openrouter/anthropic/claude-3-haiku-20240307
 LLM_BASE_URL=https://openrouter.ai/api/v1
-
-# Optional
-SESSION_API_KEY=your_session_key
-DEBUG=false
 ```
 
 ## 🌐 Frontend Integration
@@ -77,12 +91,14 @@ CORS is pre-configured to allow these domains.
 
 ## 🔧 Features
 
-- ✅ **Public API** - No authentication required
+- 🔐 **Personal Authentication** - Only you and your girlfriend can access
+- ✅ **OpenRouter Only** - No need for multiple API keys
 - ✅ **Local Runtime** - Works without Docker in container
 - ✅ **CORS Enabled** - Ready for frontend integration
-- ✅ **Multiple LLM Support** - OpenRouter, OpenAI, Anthropic
-- ✅ **Anonymous Conversations** - Start chatting immediately
-- ✅ **Mobile Optimized** - Perfect for mobile development
+- ✅ **No Google Cloud** - Zero Google dependencies
+- ✅ **HF Spaces Optimized** - Perfect for Hugging Face deployment
+- ✅ **Indonesian Novel Writing** - Special support for creative writing
+- ✅ **All-in-One File** - Single app.py file, no confusion
 
 ## 📚 Documentation
 
@@ -97,6 +113,7 @@ CORS is pre-configured to allow these domains.
 - **Code Execution**: Run and test code snippets
 - **Research Assistant**: Gather information from multiple sources
 - **Educational Tools**: Interactive learning experiences
+- **Novel Writing**: Indonesian creative writing support
 
 ## 📝 License
 
