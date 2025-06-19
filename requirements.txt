@@ -1,5 +1,5 @@
-# Personal OpenHands Backend - Minimal Requirements for HF Spaces
-# Optimized for stability and fast deployment
+# Personal OpenHands Backend - Working Requirements for HF Spaces
+# Minimal but includes all required dependencies for agents
 
 # ===== Core FastAPI and Server =====
 fastapi>=0.104.0
@@ -26,6 +26,9 @@ dirhash
 tornado
 rapidfuzz>=3.9.0
 whatthepatch>=1.0.6
+
+# ===== Browser Automation (Required by CodeActAgent) =====
+browsergym-core==0.13.3
 
 # ===== System Utilities =====
 psutil
@@ -59,7 +62,6 @@ idna
 # google-* - No Google Cloud dependencies
 # redis - External service
 # e2b - External service
-# browsergym-core - Heavy browser automation
 # boto3 - AWS dependencies not needed
 # opentelemetry-* - Monitoring not essential
 # pygithub - GitHub integration not essential
@@ -68,5 +70,5 @@ idna
 # fastmcp - MCP support not essential
 # protobuf - Heavy dependency
 
-# NOTE: This minimal setup focuses on core functionality only
-# All AI agents still work with local runtime + OpenRouter
+# NOTE: This setup includes browsergym-core which is required by CodeActAgent
+# All AI agents work with local runtime + OpenRouter
